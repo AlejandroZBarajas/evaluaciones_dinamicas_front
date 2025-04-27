@@ -1,0 +1,32 @@
+
+
+ .header {
+
+    display: flex;
+    min-height: 13vh;
+    flex-direction: column; /* Siempre columna */
+    align-items: center;
+    text-align: center;
+    padding: 0;
+    gap: 0;
+    height: auto; /* Para que crezca con el contenido */
+    background-color: rgba(0, 67, 121, 1);
+}
+
+h1, h2, h3 {
+    color: rgba(255, 255, 255, 1);
+    font-size: clamp(1rem, 5vw, 2rem); 
+    width: 100%;
+    margin: 0;
+    word-break: break-word;
+}
+
+.panel {
+    padding-top: 10px;
+    cursor: pointer;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+
+}

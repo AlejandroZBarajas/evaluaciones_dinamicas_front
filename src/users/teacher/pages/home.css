@@ -1,0 +1,33 @@
+.page{
+    width: 100vw;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+.cont{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100vw;
+    height: 250px;
+    margin-top: 20px;
+    margin-bottom: -20px;
+}
+
+.btn{
+    height: 90px;
+    width: 200px;
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: rgba(0, 67, 121, 1);
+}
+
