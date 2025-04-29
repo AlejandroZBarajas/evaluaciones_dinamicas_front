@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 import "./class_card.css";
 
 import lapizIcon from './../../../../assets/lapiz.png';
@@ -17,7 +17,7 @@ const Class_card: React.FC<ClassCardProps> = ({
   onEdit,
   refreshClasses
 }) => {
-  const navigate = useNavigate();
+ // const navigate = useNavigate();   servirá cuando la api tenga un endpoint para obtener "examsByCategoryID"
   const URL = import.meta.env.VITE_API_URL; 
 
   const toEdit = () => {
@@ -41,16 +41,16 @@ const Class_card: React.FC<ClassCardProps> = ({
     }
   };
 
-  const toClass = () => {
+  /* const toClass = () => {
     navigate(`/exams/${classID}`); 
-  };
+  }; */
 
   return (
     <div className="card">
       <div className="option" onClick={toEdit}>
         <img src={lapizIcon} alt="editar" />
       </div>
-      <div className="nameofClass" onClick={toClass}>
+      <div className="nameofClass"/*  onClick={toClass} */>
         <h2>{nameOfClass}</h2> 
       </div>
       <div className="option" onClick={toDelete}>

@@ -1,0 +1,67 @@
+import "./exam_card.css"
+
+import lapizIcon from './../../../../assets/lapiz.png';
+import eliminarIcon from './../../../../assets/eliminar.png';
+import React from "react";
+
+interface ExamCardProps{
+    examID: number
+    examName: string
+    totalQ: number
+    onEdit: (examID: number) => void
+    refreshExams: () => void
+}
+
+const ExamCard: React.FC<ExamCardProps> = ({
+    examID,
+    examName,
+    totalQ,
+    onEdit,
+    refreshExams
+}) => {
+
+    const URL = import.meta.env.VITE_API_URL; 
+
+    const toEdit = () =>{
+        onEdit(examID)
+    }
+
+    const toDelete = async () => {
+        try{
+            const response = await fetch(`${URL}exams`, {
+                method: "DELETE",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({id:examID})
+            })
+
+            if (!response.ok) throw new Error("Error al eliminar examen");
+
+            console.log("bye bye exam")
+            refreshExams()
+        }catch(error){
+            console.error(error)
+        }
+    }
+
+    return (
+        <div className="card">
+      <div className="option" onClick={toEdit}>
+        <img src={lapizIcon} alt="editar" />
+      </div>
+      <div className="examInfo"/*  onClick={toClass} */>
+        <div className="examName">
+            <h2>{examName}</h2> 
+        </div>
+        <div className="totalQ">
+            <h2>{totalQ}</h2>
+        </div>
+      </div>
+      <div className="option" onClick={toDelete}>
+        <img src={eliminarIcon} alt="eliminar" />
+      </div>
+    </div>
+    )
+
+}
+
+export default ExamCard
