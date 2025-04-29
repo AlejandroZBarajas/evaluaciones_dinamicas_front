@@ -7,7 +7,7 @@ interface EditOrCreate {
     refreshClasses: () => void
 }
 
-const ClassForm: React.FC<EditOrCreate> = ({ isEditModeOn, classID, closeForm, refreshClasses }) => {
+const ClassForm: React.FC<EditOrCreate> = ({ isEditModeOn, classID, closeForm,  refreshClasses  }) => {
     const URL = import.meta.env.VITE_API_URL; 
 
 
@@ -20,7 +20,8 @@ const ClassForm: React.FC<EditOrCreate> = ({ isEditModeOn, classID, closeForm, r
         console.log("CLICK")
         try {
             console.log(isEditModeOn)
-            const response = await fetch(`${URL}/categories`, {
+            console.log("url: "+`${URL}/categories`)
+            const response = await fetch(`${URL}categories`, {
                 method: isEditModeOn ? "PUT" : "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -39,7 +40,7 @@ const ClassForm: React.FC<EditOrCreate> = ({ isEditModeOn, classID, closeForm, r
                           }
                 ),
             });
-
+            console.log("llega")
             if (!response.ok) {
                 throw new Error(
                     isEditModeOn ? "Error al editar la materia" : "Error al crear la materia"
@@ -47,13 +48,13 @@ const ClassForm: React.FC<EditOrCreate> = ({ isEditModeOn, classID, closeForm, r
             }
 
             console.log(isEditModeOn ? "Materia editada correctamente" : "Materia creada correctamente");
-            refreshClasses()
-            closeForm()
-
-
+            
+            
         } catch (error) {
             console.error(error);
         }
+        refreshClasses()
+        closeForm()
     };
 
     return (
