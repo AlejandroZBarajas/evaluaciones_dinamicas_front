@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import Header from './../../shared/header';
+import Header from '../../../shared/header';
 import "./home.css"
 
 const Home = () => {
@@ -7,6 +7,10 @@ const Home = () => {
 
     const toClasses = () => {
         navigate("/materias")
+    }
+
+    const toExams= () => {
+        navigate("/examenes")
     }
 
     const toResults= () => {
@@ -20,6 +24,11 @@ const Home = () => {
                 <div className="cont">
                     <div className="btn" onClick={toClasses}>
                         <h2>Materias</h2>
+                    </div>
+                </div>
+                <div className="cont">
+                    <div className="btn" onClick={toExams}>
+                        <h2>Examenes</h2>
                     </div>
                 </div>
 

@@ -1,12 +1,12 @@
 .page{
     width: 100vw;
-    height: 50vh;
+    max-height: 50vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
 
-
+    
+    padding: 0px;
+    margin: 0px;
 }
 
 .cont{
@@ -16,8 +16,8 @@
     justify-content: space-evenly;
     width: 100vw;
     height: 250px;
-    margin-top: 20px;
-    margin-bottom: -20px;
+    padding: 0px;
+    margin: 0px;
 }
 
 .btn{
