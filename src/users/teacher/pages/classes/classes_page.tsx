@@ -1,82 +1,116 @@
-//import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Header from "../../../shared/header";
 import Class_card from "../../components/class_card/class_card";
-import "./classes_page.css"
+import "./classes_page.css";
 import ClassForm from "../../components/class_form/class_form";
+import addIcon from "../../../../assets/boton-agregar.png"
+
 interface ClassData {
   id: number;
   name: string;
 }
 
-/* interface ClassesProps {
-  teacher_id: number;
-} */
 
-//const Classes_page: React.FC<ClassesProps> = ({ teacher_id }) => {                dejar esta linea para usar props
-
-const Classes_page = () => { //esta linea evita props
-  //const navigate = useNavigate();
+const Classes_page = () => {
   const URL = import.meta.env.VITE_API_URL;
   const [classes, setClasses] = useState<ClassData[]>([]);
-  
-  const teacher_id = 1;  //borrar 
+  const teacher_id = 1; // temporal para pruebas
 
-  const createClass = async () => {
-   // AQUI TAMBIEN QUIERO LLAMAR A ClassForm pero en modo de edicion:false
-    try{
-        const response = await fetch(`${URL}categories`,{
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-              },
-        })
+  const [showForm, setShowForm] = useState(false);
+  const [editMode, setEditMode] = useState(false);
+  const [selectedClassID, setSelectedClassID] = useState<number | undefined>(undefined);
+
+  const fetchClasses = async () => {
+    try {
+      const response = await fetch(`${URL}categories/teacher`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ teacher_id }),
+      });
+
+      if (!response.ok) throw new Error("No se cargaron materias del maestro");
+
+      const data = await response.json();
+      setClasses(data);
+    } catch (error) {
+      console.error(error);
     }
-  }
+  };
 
   useEffect(() => {
-    const getClasses = async () => {
-      try {
-        const response = await fetch(`${URL}categories/teacher`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ teacher_id: teacher_id }),
-        });
+    fetchClasses();
+  }, []);
 
-        if (!response.ok) {
-          throw new Error("No se cargaron materias del maestro");
-        }
+  const createClass = () => {
+    setEditMode(false);
+    setSelectedClassID(undefined);
+    setShowForm(true);
+  };
 
-        const data = await response.json();
-        console.log(data)
-        setClasses(data); 
-      } catch (error) {
-        console.error(error);
-      }
-    };
+  const editClass = (classID: number) => {
+    setEditMode(true);
+    setSelectedClassID(classID);
+    setShowForm(true);
+  };
 
-    getClasses();
-  }, [teacher_id, URL]); 
+  const closeForm = () => {
+    setShowForm(false);
+  };
 
   return (
-      < >
-          <Header></Header> 
-          <div className="newSec" >
-            <div className="btnNew" onClick={createClass}>
-                <h3>Nueva materia</h3>
-            </div>
+    <>
+      <Header />
+      <div className="newSec">
+
+        <div className="title">
+          <h2 className="materias">Tus materias</h2>
+        </div>
+
+        <div className="btnNew" onClick={createClass}>
+
+          <div className="icon">
+            <img src={addIcon} alt="" />
           </div>
+
+          <div className="btnTitle">
+            <h3 className="nueva">Nueva materia</h3>
+          </div>
+
+        </div>
+      </div>
+
       <div id="classes">
         {classes.map((clase) => (
           <Class_card
             key={clase.id}
             nameOfClass={clase.name}
             classID={clase.id}
+            onEdit={editClass}
+            refreshClasses={fetchClasses}
           />
         ))}
       </div>
+
+      {showForm && (
+        <div className="modal-background">
+          <div className="modal-content">
+            <ClassForm
+              isEditModeOn={editMode}
+              classID={selectedClassID}
+              closeForm={closeForm}
+              refreshClasses={() => {
+                closeForm();
+                fetchClasses();
+              }}
+            />
+            <button className="close-button" onClick={closeForm}>
+              Cerrar
+            </button>
+          </div>
+        </div>
+      )}
     </>
   );
 };
