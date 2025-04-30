@@ -7,9 +7,12 @@ import "./exam_page.css"
 
 interface ExamData{
     id: number
-    examName: string
-    totalQ: number
+    name: string
+    total_questions: number
 }
+
+
+
 
 const ExamPage = () => {
     const URL = import.meta.env.VITE_API_URL
@@ -62,7 +65,7 @@ const ExamPage = () => {
     }
 
     return(
-        <>
+        <div className="page">
             <Header/>
             <div className="newSec">
                 <div className="title">
@@ -83,8 +86,8 @@ const ExamPage = () => {
                 <ExamCard
                     key={exam.id}
                     examID={exam.id}
-                    examName={exam.examName}
-                    totalQ={exam.totalQ}
+                    examName={exam.name}
+                    totalQ={exam.total_questions}
                     onEdit={editExam}
                     refreshExams={GetExams}
                 />
@@ -108,7 +111,7 @@ const ExamPage = () => {
           </div>
         </div>
       )}
-        </>
+        </div>
     )
 }
 

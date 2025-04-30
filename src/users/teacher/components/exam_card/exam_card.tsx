@@ -50,10 +50,10 @@ const ExamCard: React.FC<ExamCardProps> = ({
       </div>
       <div className="examInfo"/*  onClick={toClass} */>
         <div className="examName">
-            <h2>{examName}</h2> 
+            <h2 className="exname">{examName}</h2> 
         </div>
         <div className="totalQ">
-            <h2>{totalQ}</h2>
+            <h2 className="totq">{totalQ}</h2>
         </div>
       </div>
       <div className="option" onClick={toDelete}>

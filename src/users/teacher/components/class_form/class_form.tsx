@@ -16,13 +16,17 @@ const ClassForm: React.FC<EditOrCreate> = ({ isEditModeOn, classID, closeForm,  
   
 
     const handleAccept = async () => {
+        if (nameOfClass.trim() === "") {
+            alert("El nombre de la materia no puede estar vacío.");
+            return;
+        }
         console.log(nameOfClass)
         console.log("CLICK")
         try {
             console.log(isEditModeOn)
             console.log("url: "+`${URL}/categories`)
             const response = await fetch(`${URL}categories`, {
-                method: isEditModeOn ? "PUT" : "POST",
+                method: isEditModeOn  ? "PUT" : "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -73,12 +77,13 @@ const ClassForm: React.FC<EditOrCreate> = ({ isEditModeOn, classID, closeForm,  
                 />
             </div>
             <div className="buttons">
-                <div className="btn" onClick={handleAccept}>
+                <div className={`btn ${nameOfClass.trim() === "" ? "disabled" : ""}`} onClick={handleAccept} style={{ pointerEvents: nameOfClass.trim() === "" ? "none" : "auto", opacity: nameOfClass.trim() === "" ? 0.5 : 1 }}>
                     <div className="icon"></div>
                     <div className="btnName">
                         <h4>Aceptar</h4>
                     </div>
                 </div>
+
                 
             </div>
         </div>

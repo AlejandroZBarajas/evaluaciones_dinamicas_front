@@ -25,6 +25,10 @@ const ExamForm: React.FC<EditOrCreate> = ({isEditModeOn, examID, closeForm, refr
     const [materias, setMaterias] = useState<MateriaData[]> ([])
 
     const handleAccept = async () => {
+        if (examName.trim() === "") {
+            alert("El nombre del examen no puede estar vacío.");
+            return;
+        }
         console.log(examName)
         try{
             const response = await fetch (`${URL}exams`,{
@@ -66,7 +70,8 @@ const ExamForm: React.FC<EditOrCreate> = ({isEditModeOn, examID, closeForm, refr
 
     const getMaterias = async () => {
         try{
-            const response = await fetch (`${URL}categories`, {
+            console.log(`${URL}categories/teacher`)
+            const response = await fetch (`${URL}categories/teacher`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -120,7 +125,7 @@ const ExamForm: React.FC<EditOrCreate> = ({isEditModeOn, examID, closeForm, refr
                 </div>
             </div>            
             <div className="buttons">
-                <div className="btn" onClick={handleAccept}>
+                <div className={`btn ${examName.trim() === "" ? "disabled" : ""}`} onClick={handleAccept} style={{ pointerEvents: examName.trim() === "" ? "none" : "auto", opacity: examName.trim() === "" ? 0.5 : 1 }}>
                     <div className="icon"></div>
                     <div className="btnName">
                         <h4>Aceptar</h4>
