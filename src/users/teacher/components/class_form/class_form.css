@@ -1,0 +1,10 @@
+.btn.enabled {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  .btn.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  

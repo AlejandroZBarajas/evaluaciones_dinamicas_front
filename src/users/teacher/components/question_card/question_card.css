@@ -1,0 +1,91 @@
+/* Contenedor general de la tarjeta */
+.q_card {
+    border: 1px solid #1d4ed8;
+    border-radius: 6px;
+    padding: 16px;
+    margin: 20px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: sans-serif;
+  }
+  
+  /* Botones */
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+  
+  .btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 12px 20px;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+  }
+  
+  .btn:first-child {
+    background-color: #3b82f6; /* azul */
+  }
+  
+  .btn:last-child {
+    background-color: #ef4444; /* rojo */
+  }
+  
+  /* Cuerpo de la tarjeta */
+  .bodyC .question h3 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #1e3a8a;
+    margin-bottom: 12px;
+  }
+  
+  /* Opciones */
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .optn {
+    display: flex;
+    align-items: center;
+  }
+  
+  .optn input[type="radio"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    border: 2px solid #1e3a8a;
+    border-radius: 50%;
+    background-color: #f9fafb;
+    position: relative;
+    cursor: default;
+  }
+  
+  .optn input[type="radio"]:checked {
+    background-color: #0f172a; /* azul oscuro */
+  }
+  
+  .optn input[type="radio"]:checked::before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: white;
+  }
+  
+  .optn label {
+    font-weight: bold;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    cursor: default;
+  }
+  

@@ -94,23 +94,23 @@ const ExamPage = () => {
                 ))}
             </div>
             {showForm && (
-        <div className="modal-background">
-          <div className="modal-content">
-            <ExamForm
-              isEditModeOn={editMode}
-              examID={selectedExamID}
-              closeForm={closeForm}
-              refreshExams={() => {
-                closeForm();
-                GetExams();
-              }}
-            />
-            <button className="close-button" onClick={closeForm}>
-              Cerrar
-            </button>
-          </div>
-        </div>
-      )}
+                <div className="modal-background">
+                <div className="modal-content">
+                    <ExamForm
+                    isEditModeOn={editMode}
+                    examID={selectedExamID}
+                    closeForm={closeForm}
+                    refreshExams={() => {
+                        closeForm();
+                        GetExams();
+                    }}
+                    />
+                    <button className="close-button" onClick={closeForm}>
+                    Cerrar
+                    </button>
+                </div>
+                </div>
+            )}
         </div>
     )
 }

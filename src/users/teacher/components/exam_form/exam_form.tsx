@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "./exam_form.css"
 
 interface EditOrCreate{
     isEditModeOn: boolean

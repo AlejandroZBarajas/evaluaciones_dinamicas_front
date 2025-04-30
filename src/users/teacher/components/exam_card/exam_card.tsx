@@ -1,5 +1,5 @@
+import { useNavigate } from "react-router-dom";
 import "./exam_card.css"
-
 import lapizIcon from './../../../../assets/lapiz.png';
 import eliminarIcon from './../../../../assets/eliminar.png';
 import React from "react";
@@ -19,12 +19,19 @@ const ExamCard: React.FC<ExamCardProps> = ({
     onEdit,
     refreshExams
 }) => {
-
+    
+    const navigate = useNavigate();
     const URL = import.meta.env.VITE_API_URL; 
 
     const toEdit = () =>{
         onEdit(examID)
     }
+
+    const goToQuestions = () => {
+        console.log("examID: ")
+        console.log(examID)
+        navigate("/questions", { state: { examID, examName } });
+    };
 
     const toDelete = async () => {
         try{
@@ -48,8 +55,8 @@ const ExamCard: React.FC<ExamCardProps> = ({
       <div className="option" onClick={toEdit}>
         <img src={lapizIcon} alt="editar" />
       </div>
-      <div className="examInfo"/*  onClick={toClass} */>
-        <div className="examName">
+      <div className="examInfo">
+        <div className="examName" onClick={goToQuestions}>
             <h2 className="exname">{examName}</h2> 
         </div>
         <div className="totalQ">
