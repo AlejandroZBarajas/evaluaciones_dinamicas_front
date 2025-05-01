@@ -30,8 +30,8 @@ interface RawQuestion {
 
 const QuestionsByExamPage = () => {
     const location = useLocation();
-    const { examID, examName, categoryID } = location.state || {};
-
+    const { examID, examName, category_id } = location.state || {};
+console.log("la pagina recibe category_id: ",category_id)
     const URL = import.meta.env.VITE_API_URL
 
     const [questions, setQuestions] = useState <QuestionData[]>([])
@@ -134,7 +134,7 @@ const QuestionsByExamPage = () => {
                     closeForm={closeForm}
                     refreshQuestions={() => {GetQuestions()}}
                     examID={examID}
-                    categoryID={categoryID}
+                    category_id={category_id}
                     />
                     <button className="close-button" onClick={closeForm}>
                     Cerrar

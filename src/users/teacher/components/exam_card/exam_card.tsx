@@ -8,6 +8,7 @@ interface ExamCardProps{
     examID: number
     examName: string
     totalQ: number
+    category_id:number
     onEdit: (examID: number) => void
     refreshExams: () => void
 }
@@ -16,6 +17,7 @@ const ExamCard: React.FC<ExamCardProps> = ({
     examID,
     examName,
     totalQ,
+    category_id,
     onEdit,
     refreshExams
 }) => {
@@ -30,7 +32,7 @@ const ExamCard: React.FC<ExamCardProps> = ({
     const goToQuestions = () => {
         console.log("examID: ")
         console.log(examID)
-        navigate("/questions", { state: { examID, examName } });
+        navigate("/questions", { state: { examID, examName, category_id } });
     };
 
     const toDelete = async () => {

@@ -7,7 +7,7 @@ interface EditOrCreate{
     closeForm: () => void
     refreshQuestions: () => void
     examID: number;
-    categoryID: number;
+    category_id: number;
 }
 /* interface QuestionData{
     id?:number
@@ -17,14 +17,13 @@ interface EditOrCreate{
     category_id:number
     exam_id:number
 }  */
-
 const QuestionForm : React.FC<EditOrCreate> = ({
     isEditModeOn,
     questionID,
     closeForm,
     refreshQuestions,
     examID,
-    categoryID
+    category_id
 }) => {
     
 
@@ -52,7 +51,7 @@ const QuestionForm : React.FC<EditOrCreate> = ({
             answer.trim() !== "" &&
             wrong1.trim() !== "" &&
             examID > 0 &&
-            categoryID > 0
+            category_id > 0
         )
     }
 
@@ -70,12 +69,12 @@ const QuestionForm : React.FC<EditOrCreate> = ({
             options: [answer, wrong1, wrong2, wrong3],
             answer: answer
           },
-          category_id: Number(categoryID),
+          category_id: Number(category_id),
           exam_id: Number(examID)
         };
       
         console.log("Payload:", JSON.stringify(payload)); // 👈 Aquí imprimimos lo que se enviará
-        console.log("categoryID:", categoryID, typeof categoryID);
+        console.log("categoryID:", category_id, typeof category_id);
 
       
         const response = await fetch(`${URL}questions`, {

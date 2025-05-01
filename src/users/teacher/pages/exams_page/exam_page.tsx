@@ -8,6 +8,7 @@ import "./exam_page.css"
 interface ExamData{
     id: number
     name: string
+    category_id:number
     total_questions: number
 }
 
@@ -37,7 +38,7 @@ const ExamPage = () => {
             }
 
             const data = await response.json()
-            console.log(data)
+            console.log("examenes cargados: ",data)
             setExams(data)
 
         }catch (error){
@@ -89,6 +90,7 @@ const ExamPage = () => {
                     examName={exam.name}
                     totalQ={exam.total_questions}
                     onEdit={editExam}
+                    category_id={exam.category_id}
                     refreshExams={GetExams}
                 />
                 ))}
