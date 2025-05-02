@@ -1,7 +1,7 @@
 import lapizIcon from './../../../../assets/lapiz.png';
 import eliminarIcon from './../../../../assets/eliminar.png';
 
-//import "./question_card.css"
+import "./../../../../App.css"
 
 interface QuestionDataProps{
     q_id:number
@@ -60,27 +60,18 @@ const QuestionCard: React.FC<QuestionDataProps> = ({
 
     return(
         <div className="q_card">
-            <div className="buttons">
-                <div className="btn" onClick={toEdit}>
-                    <div className="icon"><img src={lapizIcon} alt="" /></div>
-                    <div className="btnTitle"><h2 className="btnName">Editar</h2></div>
+            <div className="q_cardbuttons">
+                <div className="editQbtn" onClick={toEdit}>
+                    <img src={lapizIcon} alt="" />
+                   <p className="btnName">Editar</p> 
                 </div>
-                <div className="btn" onClick={toDelete}> 
-                    <div className="icon"><img src={eliminarIcon} alt="" />
-                    </div>
-                    <div className="btnTitle"><h2 className="btnName">Eliminar</h2></div>
+                <div className="deleteQbtn" onClick={toDelete}> 
+                    <p className="btnName">Eliminar</p>
+                    <img src={eliminarIcon} alt="" />
                 </div>
             </div>
-
-            <div className="bodyC">
-                <div className="question">
-                    <h3>{pregunta}</h3>
-                </div>
-
-
-
+                <p className='question'>{pregunta}</p>
                 <div className="options">
-                 
                     {
                         <div className="optn" key={answer}>
                             <label>
@@ -110,9 +101,6 @@ const QuestionCard: React.FC<QuestionDataProps> = ({
                         ))}
                 </div>
 
-
-
-            </div>
         </div>
     )
 }

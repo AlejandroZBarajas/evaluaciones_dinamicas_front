@@ -1,0 +1,177 @@
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border:rgba(0, 67, 121, 1) solid 2px;
+    border-radius: 5px;
+    max-width: fit-content;
+    min-height: fit-content;
+}
+.formrow{
+    display: flex;
+    flex-direction: column;
+    margin: 8px;
+    min-width: fit-content;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+
+.acceptBtn{
+    cursor: pointer;
+    height: 50px;
+  width: 100%;
+  border: solid blue 1px;
+}
+
+input{
+    margin-top: 10px;
+    border:rgba(0, 67, 121, 1) solid 1px;
+    border-radius: 5px;
+}
+.formText{
+    font-weight: 800;
+    color:rgba(0, 67, 121, 1);
+}
+
+.formbtn{   
+    cursor: pointer; 
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color:rgba(30, 141, 231, 1);
+}
+.formBtnText{
+    color: white;
+}
+.formbtn.enable{
+    opacity: 1;
+    pointer-events: auto;
+}
+.formbtn.disabled{
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+
+/* QUESTION CARD */
+
+.q_card{
+    width: 350px;
+    border: 1px solid #1d4ed8;
+    border-radius: 6px;
+    margin: 20px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: sans-serif;
+}
+
+.q_cardbuttons{
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.btnName{
+    color:white;
+    font-weight: 800;
+}
+.editQbtn,.deleteQbtn{
+    cursor: pointer;
+    display: flex;
+    justify-content: space-evenly;
+    width: 50%;
+    padding: 10px;
+}
+.editQbtn {
+    background-color: #3b82f6; 
+  }
+  
+.deleteQbtn{
+    background-color: #ef4444; 
+  }
+
+  .question{
+    color: rgba(0, 67, 121, 1);
+    font-weight: 800;
+    margin: 10px;
+  }
+
+  .options{
+    margin: 15px;
+  }
+
+  /* PAGES */
+
+.page{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0%;
+    margin: 0;
+}
+
+.pageTitle, .newWhat{
+    margin: 15px;
+    color: rgba(0, 67, 121, 1);
+
+}
+.formCreateCaller{
+    cursor: pointer;
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
+    align-items: center;
+    flex-direction: row;
+    height: fit-content;
+    width: fit-content;
+    border: rgba(0, 67, 121, 1) solid 2px;
+    border-radius: 15px;
+}
+.addNew{
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+}
+
+.homebtn{
+    cursor: pointer;
+    height: 90px;
+    width: 200px;
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: rgba(0, 67, 121, 1);
+    margin: 25px;
+}
+
+/* HEADER */
+.header {
+    display: flex;
+    min-height: 13vh;
+    flex-direction: column; 
+    align-items: center;
+    text-align: center;
+    padding: 0;
+    gap: 0;
+    height: auto; 
+    width: 100%;
+    background-color: rgba(0, 67, 121, 1);
+}
+
+.headertext {
+    color: rgba(255, 255, 255, 1);
+    font-size: clamp(1rem, 5vw, 2rem); 
+    width: 100%;
+    margin: 0;
+    word-break: break-word;
+}
+
+.headerpanel {
+    padding-top: 10px;
+    cursor: pointer;
+    width: 100%;
+}

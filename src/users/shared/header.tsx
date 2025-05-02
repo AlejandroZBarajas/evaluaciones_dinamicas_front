@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../context/user_context"; // importar el hook
-import './header.css';
+import "./../../App.css"
 
 const Header = () => {
   const navigate = useNavigate();
@@ -11,19 +11,17 @@ const Header = () => {
   };
 
   return (
-    <>
       <div className="header">
-        <div className="panel" onClick={goHome} style={{cursor: "pointer"}}>
-          <h1>UP Chiapas</h1>
+        <div className="headerpanel" onClick={goHome} style={{cursor: "pointer"}}>
+          <h1 className="headertext">UP Chiapas</h1>
         </div>
-        <div className="panel">
-          <h2>Evaluaciones dinámicas</h2>
+        <div className="headerpanel">
+          <h2 className="headertext">Evaluaciones dinámicas</h2>
         </div>
-        <div className="panel">
-            <h3>{email}</h3>
+        <div className="headerpanel">
+            <h3 className="headertext">{email}</h3>
         </div>
       </div>
-    </>
   );
 };
 

@@ -96,7 +96,7 @@ const Classes_page = () => {
       {showForm && (
         <div className="modal-background">
           <div className="modal-content">
-            <ClassForm
+            <ClassForm 
               isEditModeOn={editMode}
               classID={selectedClassID}
               closeForm={closeForm}

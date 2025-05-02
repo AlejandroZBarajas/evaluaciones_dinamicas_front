@@ -1,4 +1,7 @@
 import { useState } from "react";
+import acceptIcon from "./../../../../assets/accept.png"
+import "./../../../../App.css"
+
 
 interface EditOrCreate {
     isEditModeOn: boolean;
@@ -63,10 +66,9 @@ const ClassForm: React.FC<EditOrCreate> = ({ isEditModeOn, classID, closeForm,  
 
     return (
         <div className="form">
-            <div className="title">
-                <h3>Ingrese el nombre de la materia</h3>
-            </div>
-            <div className="inputField">
+            <div className="formrow">
+                <p className="formText">Ingrese el nombre de la materia</p>
+
                 <input
                     type="text"
                     name="materia"
@@ -76,16 +78,12 @@ const ClassForm: React.FC<EditOrCreate> = ({ isEditModeOn, classID, closeForm,  
                     onChange={(e) => setNameOfClass(e.target.value)}
                 />
             </div>
-            <div className="buttons">
-                <div className={`btn ${nameOfClass.trim() === "" ? "disabled" : ""}`} onClick={handleAccept} style={{ pointerEvents: nameOfClass.trim() === "" ? "none" : "auto", opacity: nameOfClass.trim() === "" ? 0.5 : 1 }}>
-                    <div className="icon"></div>
-                    <div className="btnName">
-                        <h4>Aceptar</h4>
-                    </div>
+                <div className={`formbtn ${nameOfClass.trim() === "" ? "disabled" : ""}`} onClick={handleAccept} >
+                    <img src={acceptIcon} alt="" />
+                    <p className="formBtnText">Aceptar</p>
+
                 </div>
 
-                
-            </div>
         </div>
     );
 };

@@ -1,5 +1,6 @@
  import { useState} from "react";
-import "./question_form.css"
+ import acceptIcon from "./../../../../assets/accept.png"
+ import "./../../../../App.css"
 
 interface EditOrCreate{
     isEditModeOn: boolean
@@ -96,120 +97,36 @@ const QuestionForm : React.FC<EditOrCreate> = ({
       } catch (error) {
         console.error("Error al guardar la pregunta:", error);
       }
-      
-      
-
-
-
-
-        /* try{
-            const response = await fetch (`${URL}questions`,{
-                method: isEditModeOn ? "PUT" : "POST",
-                headers:{"Content-Type":"application/json"},
-                body: JSON.stringify({
-                    ...(isEditModeOn && {id:questionID}),
-                        question_data: {
-                            question: pregunta,
-                            options: options,
-                            answer: answer
-                            },
-                        category_id: categoryID,
-                        exam_id: examID
-                    })
-            })
-            const responseData = await response.json();
-            console.log("Backend response:", response.status, responseData);
-            if(!response.ok){
-                throw new Error ("No se pudo guardar la pregunta")
-            }
-            refreshQuestions()
-            closeForm()
-        }catch(error){
-            console.log(error)
-        } */
     }
 
     return(
         <div className="form">
-
-            <div className="fieldCont">
-                <div className="inputCont">
-                    
-                    <div className="inputT">
-                        <h3 className="opttext">* Ingrese la pregunta</h3>
-                    </div>
-
-                    <div className="inputF">
-                        <input type="text" value={pregunta} onChange={(e)=> setPregunta(e.target.value)} />
-                    </div>
-
-                </div>
-
-                <div className="inputCont">
-                    
-                    <div className="inputT">
-                        <h3 className="opttext" >* Ingrese la respuesta</h3>
-                    </div>
-
-                    <div className="inputF">
-                        <input type="text" value={answer} onChange={(e)=>setAnswer(e.target.value)}/>
-                    </div>
-                    
-                </div>
-
-                <div className="inputCont">
-                    
-                    <div className="inputT">
-                        <h3 className="opttext">* Opción erronea 1</h3>
-                    </div>
-
-                    <div className="inputF">
-                        <input type="text" value={wrong1} onChange={(e)=>setWrong1(e.target.value)}/>
-                    </div>
-                    
-                </div>
-
-                <div className="inputCont">
-                    
-                    <div className="inputT">
-                        <h3 className="opttext">Opción erronea 2</h3>
-                    </div>
-
-                    <div className="inputF">
-                        <input type="text" value={wrong2} onChange={(e)=>setWrong2(e.target.value)}/>
-                    </div>
-                    
-                </div>
-
-                <div className="inputCont">
-                    
-                    <div className="inputT">
-                        <h3 className="opttext">Opción erronea 3</h3>
-                    </div>
-
-                    <div className="inputF">
-                        <input type="text" value={wrong3} onChange={(e)=>setWrong3(e.target.value)}/>
-                    </div>
-                    
-                </div>
-                
+            <div className="formrow">
+                <p className="formText">* Ingrese la pregunta</p>
+                <input type="text" value={pregunta} onChange={(e)=> setPregunta(e.target.value)} />
             </div>
-
-                <div
-                className={`btn ${!isFormValid() ? "disabled" : ""}`}
-                onClick={handleAccept}
-                
-                >
-                    <div className="icon"></div>
-                    <div className="btnName">
-                        <h4>Aceptar</h4>
-                    </div>
-                </div>
-           
-
+            <div className="formrow">
+                <p className="formText" >* Ingrese la respuesta</p>
+                <input type="text" value={answer} onChange={(e)=>setAnswer(e.target.value)}/>                  
+            </div>
+            <div className="formrow">
+                <p className="formText">* Opción erronea 1</p>
+                <input type="text" value={wrong1} onChange={(e)=>setWrong1(e.target.value)}/>                   
+            </div>
+            <div className="formrow">
+                <p className="formText">Opción erronea 2</p>
+                <input type="text" value={wrong2} onChange={(e)=>setWrong2(e.target.value)}/>       
+            </div>
+            <div className="formrow">
+                <p className="formText">Opción erronea 3</p>
+                <input type="text" value={wrong3} onChange={(e)=>setWrong3(e.target.value)}/>         
+            </div>
+            <div className={`formbtn ${!isFormValid() ? "disabled" : ""}`}
+            onClick={handleAccept}>
+                <img src={acceptIcon} alt="" />
+                <p className="formBtnText">Aceptar</p>
+            </div>
         </div>
-
     )
-
 }
 export default QuestionForm

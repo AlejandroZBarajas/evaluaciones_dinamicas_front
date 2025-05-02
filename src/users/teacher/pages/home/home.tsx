@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import Header from '../../../shared/header';
-import "./home.css"
+import "./../../../../App.css"
 
 const Home = () => {
     const navigate = useNavigate()
@@ -18,27 +18,19 @@ const Home = () => {
     }
 
     return(
-        <div>
+        <div className="page">
             <Header></Header> 
-            <div className="page">
-                <div className="cont">
-                    <div className="btn" onClick={toClasses}>
+                    <div className="homebtn" onClick={toClasses}>
                         <h2>Materias</h2>
                     </div>
-                </div>
-                <div className="cont">
-                    <div className="btn" onClick={toExams}>
+
+                    <div className="homebtn" onClick={toExams}>
                         <h2>Examenes</h2>
                     </div>
-                </div>
 
-                <div className="cont">
-                    <div className="btn" onClick={toResults}>
+                    <div className="homebtn" onClick={toResults}>
                         <h2>Resultados</h2>
                     </div>
-                </div>
-            </div>
-            
 
         </div>
     )

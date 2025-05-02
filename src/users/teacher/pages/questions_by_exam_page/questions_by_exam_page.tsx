@@ -5,7 +5,8 @@ import QuestionCard from "../../components/question_card/question_card";
 import QuestionForm from "../../components/question_form/question_form";
 
 import addIcon from "../../../../assets/boton-agregar.png"
-import "./questions_by_exam_page.css"
+//import "./questions_by_exam_page.css"
+import "./../../../../App.css"
 
 interface QuestionData {
     id: number;
@@ -96,21 +97,14 @@ console.log("la pagina recibe category_id: ",category_id)
     return(
         <div className="page">
             <Header/>
-            <div className="newSec">
-                <div className="title">
-                    <h2 className="exams">{examName}</h2>
+                <h2 className="pageTitle">{examName}</h2>
+                <div className="formCreateCaller" onClick={createQ}>
+                    <img className="addNew" src={addIcon} alt="" />
+                    <p className="newWhat">Nueva pregunta</p>
                 </div>
-                <div className="btnNew" onClick={createQ}>
-                    <div className="icon">
-                        <img src={addIcon} alt="" />
-                    </div>
-                    <div className="btnTitle">
-                        <h3 className="nueva">Nueva pregunta</h3>
-                    </div>
-                </div>
-            </div>
 
-            <div className="questions">
+
+            <div className="cardMapper">
             {questions.map((question) => (
                 <QuestionCard
                     key={question.id}

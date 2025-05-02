@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import "./exam_form.css"
+import acceptIcon from "./../../../../assets/accept.png"
+import "./../../../../App.css"
 
 interface EditOrCreate{
     isEditModeOn: boolean
@@ -91,7 +92,7 @@ const ExamForm: React.FC<EditOrCreate> = ({isEditModeOn, examID, closeForm, refr
 
     return(
         <div className="form">
-            <div className="row">
+            <div className="formrow">
                 <select
                 value={classID}
                 onChange={(e) => setClassID(Number(e.target.value))}
@@ -102,37 +103,25 @@ const ExamForm: React.FC<EditOrCreate> = ({isEditModeOn, examID, closeForm, refr
                     ))}
                 </select>               
             </div>
-            <div className="row">
-                <div className="fieldInfo">
-                    <p>Nombre del examen</p>
-                </div>
-                <div className="inputField">
+            <div className="formrow">
+                    <p className="formText">Nombre del examen</p>
                     <input 
                     type="text"
                     value={examName} 
                     onChange={(e)=> setExamName(e.target.value)}/>
-                </div>
             </div>
-            <div className="row">
-                <div className="fieldInfo">
-                    <p>Preguntas totales</p>
-                </div>
-                <div className="inputField">
+            <div className="formrow">
+                    <p className="formText">Preguntas totales</p>
                     <input 
                     type="number" 
                     value={totalQ}
                     onChange={(e) => setTotalQ(Number(e.target.value))}
                     />
-                </div>
-            </div>            
-            <div className="buttons">
-                <div className={`btn ${examName.trim() === "" ? "disabled" : ""}`} onClick={handleAccept} style={{ pointerEvents: examName.trim() === "" ? "none" : "auto", opacity: examName.trim() === "" ? 0.5 : 1 }}>
-                    <div className="icon"></div>
-                    <div className="btnName">
-                        <h4>Aceptar</h4>
-                    </div>
-                </div> 
-            </div>
+            </div> 
+            <div className={`formbtn ${examName.trim() === "" ? "disabled" : ""}`} onClick={handleAccept} >
+                <img src={acceptIcon} alt="" />
+                <p className="formBtnText">Aceptar</p>
+            </div> 
         </div>
     )
 }
