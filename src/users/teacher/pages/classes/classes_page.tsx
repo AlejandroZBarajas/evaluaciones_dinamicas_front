@@ -13,9 +13,9 @@ interface ClassData {
 
 const Classes_page = () => {
   const URL = import.meta.env.VITE_API_URL;
+  
   const [classes, setClasses] = useState<ClassData[]>([]);
-  const teacher_id = 1; // temporal para pruebas
-
+  const teacher_id = Number(localStorage.getItem("user_id"))
   const [showForm, setShowForm] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [selectedClassID, setSelectedClassID] = useState<number | undefined>(undefined);

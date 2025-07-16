@@ -4,6 +4,7 @@ import ExamCard from "../../components/exam_card/exam_card";
 import ExamForm from "../../components/exam_form/exam_form";
 import addIcon from "../../../../assets/boton-agregar.png"
 import "./exam_page.css"
+import { useNavigate } from "react-router-dom";
 
 interface ExamData{
     id: number
@@ -16,6 +17,7 @@ interface ExamData{
 
 
 const ExamPage = () => {
+    const navigate = useNavigate()
     const URL = import.meta.env.VITE_API_URL
     const [exams, setExams] = useState<ExamData[]>([])
     const teacher_id= 1
@@ -23,6 +25,10 @@ const ExamPage = () => {
     const [showForm, setShowForm] = useState(false)
     const [editMode, setEditMode] = useState(false)
     const [selectedExamID, setSelectedExamID] = useState <number | undefined>(undefined)
+
+    const genLink = () =>{
+        navigate("/genExam")
+    }
 
     const GetExams = async () => {
         console.log("buscando examenes")
@@ -81,6 +87,9 @@ const ExamPage = () => {
                     </div>
                 </div>
             </div>
+                <div className="btnNew" onClick={genLink}>
+                    <h3 className="nueva">Generar enlace</h3>
+                </div>
 
             <div id="examenes">
                 {exams.map((exam) => (

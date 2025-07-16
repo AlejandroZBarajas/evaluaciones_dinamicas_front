@@ -175,3 +175,18 @@ input{
     cursor: pointer;
     width: 100%;
 }
+
+
+/* LOGIN*/
+
+.tologinSec, .toregisterSec{
+    border: rgba(0, 67, 121, 1) solid 2px;
+    width: 200px;
+    min-height: fit-content;
+    height: 50px;
+}
+
+.loginbtn, .registerbtn{
+    background-color: #3b82f6;
+    width: 200px;
+}

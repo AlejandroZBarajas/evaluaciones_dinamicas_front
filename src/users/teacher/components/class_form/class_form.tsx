@@ -12,7 +12,8 @@ interface EditOrCreate {
 
 const ClassForm: React.FC<EditOrCreate> = ({ isEditModeOn, classID, closeForm,  refreshClasses  }) => {
     const URL = import.meta.env.VITE_API_URL; 
-
+    const teacher_id = Number(localStorage.getItem("user_id"))
+    console.log(teacher_id)
 
     const [nameOfClass, setNameOfClass] = useState<string>("");
 
@@ -39,11 +40,11 @@ const ClassForm: React.FC<EditOrCreate> = ({ isEditModeOn, classID, closeForm,  
                         ? {
                               id: classID,         
                               name: nameOfClass,
-                              teacher_id: 1,       
+                              teacher_id: teacher_id,       
                           }
                         : {
                               name: nameOfClass,
-                              teacher_id: 1,
+                              teacher_id: teacher_id,
                           }
                 ),
             });
