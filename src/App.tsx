@@ -5,8 +5,8 @@ import Home from "./users/teacher/pages/home/home"
 import Classes_page from './users/teacher/pages/classes/classes_page';
 import ExamPage from './users/teacher/pages/exams_page/exam_page';
 import QuestionsByExamPage from './users/teacher/pages/questions_by_exam_page/questions_by_exam_page';
-import FormTester from './formTester';
 import RegisterForm from './users/pages/register';
+import ExamsByClass from './users/teacher/pages/examsby_class/examsby_class';
 
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
       <Route path="/materias" element={<Classes_page />} />
       <Route path="/examenes" element={<ExamPage />} />
       <Route path="/questions" element={<QuestionsByExamPage />} />
-       <Route path="/test" element={<FormTester />} /> 
+      <Route path="/examsbyclass" element={<ExamsByClass />} /> 
     </Routes>
   );
 }

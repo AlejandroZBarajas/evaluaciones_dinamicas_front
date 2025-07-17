@@ -54,21 +54,21 @@ const ExamCard: React.FC<ExamCardProps> = ({
 
     return (
         <div className="card">
-      <div className="option" onClick={toEdit}>
-        <img src={lapizIcon} alt="editar" />
-      </div>
-      <div className="examInfo">
-        <div className="examName" onClick={goToQuestions}>
-            <h2 className="exname">{examName}</h2> 
+            <div className="option" onClick={toEdit}>
+                <img src={lapizIcon} alt="editar" />
+            </div>
+            <div className="examInfo" onClick={goToQuestions}>
+                <div className="examName" >
+                    <h2 className="exname">{examName}</h2> 
+                </div>
+                <div className="totalQ">
+                    <h2 className="totq">{totalQ}</h2>
+                </div>
+            </div>
+            <div className="option" onClick={toDelete}>
+                <img src={eliminarIcon} alt="eliminar" />
+            </div>
         </div>
-        <div className="totalQ">
-            <h2 className="totq">{totalQ}</h2>
-        </div>
-      </div>
-      <div className="option" onClick={toDelete}>
-        <img src={eliminarIcon} alt="eliminar" />
-      </div>
-    </div>
     )
 
 }

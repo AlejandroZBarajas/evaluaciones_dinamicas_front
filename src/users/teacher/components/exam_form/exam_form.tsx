@@ -19,6 +19,8 @@ const ExamForm: React.FC<EditOrCreate> = ({isEditModeOn, examID, closeForm, refr
         getMaterias();
       }, []);
 
+    const teacher_id = Number(localStorage.getItem("user_id"))
+
     const URL = import.meta.env.VITE_API_URL
     const [examName, setExamName] = useState <string> ("")
     const [totalQ, setTotalQ] = useState <number> (0)
@@ -44,13 +46,13 @@ const ExamForm: React.FC<EditOrCreate> = ({isEditModeOn, examID, closeForm, refr
                         id: examID,
                         name: examName,
                         total_questions: totalQ,
-                        teacher_id: 1 ,
+                        teacher_id:  teacher_id,
                         category_id: classID
                     }
                     :{
                         name: examName,
                         total_questions: totalQ,
-                        teacher_id: 1,
+                        teacher_id: teacher_id,
                         category_id: classID 
                     }
                 )
@@ -78,7 +80,7 @@ const ExamForm: React.FC<EditOrCreate> = ({isEditModeOn, examID, closeForm, refr
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({teacher_id:1})
+                body: JSON.stringify({teacher_id:teacher_id})
             })
 
             if (!response.ok) throw new Error("No se cargaron materias del maestro");

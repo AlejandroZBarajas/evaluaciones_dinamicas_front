@@ -1,4 +1,4 @@
-//import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./class_card.css";
 
 import lapizIcon from './../../../../assets/lapiz.png';
@@ -17,13 +17,19 @@ const Class_card: React.FC<ClassCardProps> = ({
   onEdit,
   refreshClasses
 }) => {
- // const navigate = useNavigate();   servirá cuando la api tenga un endpoint para obtener "examsByCategoryID"
+  const navigate = useNavigate();   
   const URL = import.meta.env.VITE_API_URL; 
 
   const toEdit = () => {
-    onEdit(classID); // llama al modal desde el padre
+    onEdit(classID); 
   };
 
+  const examsbyTeacherAndCategory = () => {
+    console.log(classID)
+    const class_id = classID.toString()
+    localStorage.setItem("class_id", class_id) 
+    navigate("/examsbyclass")
+  }
   const toDelete = async () => {
     try {
       const response = await fetch(`${URL}categories`, {
@@ -35,22 +41,20 @@ const Class_card: React.FC<ClassCardProps> = ({
       if (!response.ok) throw new Error("Error al eliminar la materia");
 
       console.log("Materia eliminada correctamente");
-      refreshClasses(); // actualizar lista
+      refreshClasses(); 
     } catch (error) {
       console.error(error);
     }
   };
 
-  /* const toClass = () => {
-    navigate(`/exams/${classID}`); 
-  }; */
+
 
   return (
     <div className="card">
       <div className="option" onClick={toEdit}>
         <img src={lapizIcon} alt="editar" />
       </div>
-      <div className="nameofClass"/*  onClick={toClass} */>
+      <div className="nameofClass"  onClick={examsbyTeacherAndCategory} >
         <h2>{nameOfClass}</h2> 
       </div>
       <div className="option" onClick={toDelete}>

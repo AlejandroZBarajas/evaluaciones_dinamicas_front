@@ -31,7 +31,8 @@ interface RawQuestion {
 
 const QuestionsByExamPage = () => {
     const location = useLocation();
-    const { examID, examName, category_id } = location.state || {};
+    const { examID, examName} = location.state || {};
+    const category_id =Number(localStorage.getItem("class_id"))
 console.log("la pagina recibe category_id: ",category_id)
     const URL = import.meta.env.VITE_API_URL
 
