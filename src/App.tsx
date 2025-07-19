@@ -7,6 +7,8 @@ import ExamPage from './users/teacher/pages/exams_page/exam_page';
 import QuestionsByExamPage from './users/teacher/pages/questions_by_exam_page/questions_by_exam_page';
 import RegisterForm from './users/pages/register';
 import ExamsByClass from './users/teacher/pages/examsby_class/examsby_class';
+import ExamResultsContainer from './users/teacher/pages/results/exam_results_container';
+
 
 
 function App() {
@@ -19,6 +21,7 @@ function App() {
       <Route path="/examenes" element={<ExamPage />} />
       <Route path="/questions" element={<QuestionsByExamPage />} />
       <Route path="/examsbyclass" element={<ExamsByClass />} /> 
+      <Route path="/test" element={<ExamResultsContainer />} /> 
     </Routes>
   );
 }
